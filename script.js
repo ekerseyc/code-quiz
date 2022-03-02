@@ -1,50 +1,148 @@
 var beginEl = document.querySelector('#begin');
-var startBtn = document.querySelector('#begin');
+var beginBtn = document.querySelector('#begin');
 var quizEl = document.querySelector('#quiz');
 var finishEl = document.querySelector('#finish');
 var nameInput = document.querySelector('#name');
+var question = document.querySelector('#question');
+var answersDiv = document.querySelector('#answers');
+var questionIndex = 0;
+var rightOrWrong = document.querySelector('#right-or-wrong');
+var resultDiv = document.querySelector("#result");
 
-var question = {
-    possible: [
-        "Answer 1",
-        "Answer 2",
-        "Answer 3",
-        "Answer 4",
-    ],
-    correct: 2
-}
+// timer variables
+var secondsLeft = 60;
+var secondsTimer = document.querySelector('#timer');
 
+// quiz questions
+var quizQuestions = [
+    {
+        question: "What is the capital of North Dakota?",
+        choices: [
+            "Raleigh",
+            "Richmond",
+            "Bismark",
+            "Fargo",
+        ],
+        correct: 2
+    },
+    {
+        question: "What mountain range covers most of West Virginia?",
+        choices: [
+            "Rockies",
+            "Eastern Alps",
+            "Blue Ridge",
+            "Appalachian",
+        ],
+        correct: 3
+    },
+    {
+        question: "Which of the following states does NOT border Ohio?",
+        choices: [
+            "Indiana",
+            "Illinois",
+            "Kentucky",
+            "Pennsylvania",
+        ],
+        correct: 1
+    },
+    {
+        question: "hich Hawaiian island is Honolulu on?",
+        choices: [
+            "Oahu",
+            "Lanai",
+            "Hawaii",
+            "Maui",
+        ],
+        correct: 0
+    },
+    {
+        question: "Which body of water borders the state of Minnesota?",
+        choices: [
+            "Mississippi River",
+            "Lake Michigan",
+            "Lake Erie",
+            "Lake Superior",
+        ],
+        correct: 3
+    },
+]
+
+// start screen
 function startScreen() {
     beginEl.style.display = "block";
     quizEl.style.display = "none";
     finishEl.style.display = "none";
+    resultDiv.style.display = "none";
 }
+// rename gameScreen
 
 function gameScreen() {
     beginEl.style.display = "none";
     quizEl.style.display = "block";
     finishEl.style.display = "none";
+    resultDiv.style.display = "none";
+    secondsTimer.textContent = secondsLeft;
+    setTime();
 
-    for (var i = 0; i < question.possible.length; i++) {
-        var item = question.possible[i];
+    // question 1 load
+    question.textContent = quizQuestions[questionIndex].question;
+
+    for (var i = 0; i < quizQuestions[questionIndex].choices.length; i++) {
+        var item = quizQuestions[questionIndex].choices[i];
         var answerBtn = document.createElement('button');
-        answerBtn.textContent = i + 1 + "." + item;
-        quizEl.appendChild(answerBtn);
+        answerBtn.textContent = item;
+        answerBtn.addEventListener('click', function() {
+            checkAnswer(this.textContent);
+        });
+        answerBtn.id = "choice-" + i;
+        answersDiv.appendChild(answerBtn); //add button to screen
     }
+
+}
+
+function checkAnswer(choice) {
+    //check if they got the right answer
+    if (choice !== quizQuestions[questionIndex].correct) {
+        // tell them it's wrong
+        rightOrWrong.textContent = 'WRONG!';
+    }
+    else {
+        // correct answer!
+        rightOrWrong.textContent = 'CORRECT!';
+    }
+    resultDiv.style.display = "block";
+    // subtract 15 sec from timer
+    secondsTimer = secondsTimer - 15;
 }
 
 function endScreen() {
     beginEl.style.display = "none";
     quizEl.style.display = "none";
     finishEl.style.display = "block";
+    resultDiv.style.display = "none";
 }
 
 function init() {
     startScreen();
 }
 
+
+function setTime() {
+    // Sets interval in variable
+    var timerInterval = setInterval(function () {
+        secondsLeft--; // secondsLeft = secondsLeft -1;
+        secondsTimer.textContent = secondsLeft;
+
+        if (secondsLeft <= 0) {
+            // Stops execution of action at set interval
+            clearInterval(timerInterval);
+        }
+
+    }, 1000);
+}
+
 beginBtn.addEventListener('click', gameScreen);
-quizEl.addEventListener('click', endScreen);
+// quizEl.addEventListener('click', endScreen);
 
 init();
 

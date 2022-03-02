@@ -1,6 +1,6 @@
 *{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: darkslateblue;
+    background-color: wheat;
 }
 
 h1 {
@@ -19,4 +19,7 @@ button {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 16px;
+}
+#time {
+    text-align: right;
 }
