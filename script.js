@@ -23,7 +23,7 @@ var quizQuestions = [
             "Bismark",
             "Fargo",
         ],
-        correct: 2
+        correct: "Bismark"
     },
     {
         question: "What mountain range covers most of West Virginia?",
@@ -33,7 +33,7 @@ var quizQuestions = [
             "Blue Ridge",
             "Appalachian",
         ],
-        correct: 3
+        correct: "Appalachian"
     },
     {
         question: "Which of the following states does NOT border Ohio?",
@@ -43,7 +43,7 @@ var quizQuestions = [
             "Kentucky",
             "Pennsylvania",
         ],
-        correct: 1
+        correct: "Illinois"
     },
     {
         question: "hich Hawaiian island is Honolulu on?",
@@ -53,7 +53,7 @@ var quizQuestions = [
             "Hawaii",
             "Maui",
         ],
-        correct: 0
+        correct: "Oahu"
     },
     {
         question: "Which body of water borders the state of Minnesota?",
@@ -63,7 +63,7 @@ var quizQuestions = [
             "Lake Erie",
             "Lake Superior",
         ],
-        correct: 3
+        correct: "Lake Superior"
     },
 ]
 
@@ -112,7 +112,7 @@ function checkAnswer(choice) {
     }
     resultDiv.style.display = "block";
     // subtract 15 sec from timer
-    secondsTimer = secondsTimer - 15;
+    // secondsTimer = secondsTimer - 15;
 }
 
 function endScreen() {
