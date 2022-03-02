@@ -74,9 +74,8 @@ function startScreen() {
     finishEl.style.display = "none";
     resultDiv.style.display = "none";
 }
-// rename gameScreen
 
-function gameScreen() {
+function quizScreen() {
     beginEl.style.display = "none";
     quizEl.style.display = "block";
     finishEl.style.display = "none";
@@ -84,7 +83,7 @@ function gameScreen() {
     secondsTimer.textContent = secondsLeft;
     setTime();
 
-    // question 1 load
+    // questions load
     question.textContent = quizQuestions[questionIndex].question;
 
     for (var i = 0; i < quizQuestions[questionIndex].choices.length; i++) {
@@ -95,7 +94,7 @@ function gameScreen() {
             checkAnswer(this.textContent);
         });
         answerBtn.id = "choice-" + i;
-        answersDiv.appendChild(answerBtn); //add button to screen
+        answersDiv.appendChild(answerBtn); //adds button to screen
     }
 
 }
@@ -112,7 +111,7 @@ function checkAnswer(choice) {
     }
     resultDiv.style.display = "block";
     // subtract 15 sec from timer
-    // secondsTimer = secondsTimer - 15;
+    // secondsTimer = secondsTimer - 10;
 }
 
 function endScreen() {
@@ -141,7 +140,7 @@ function setTime() {
     }, 1000);
 }
 
-beginBtn.addEventListener('click', gameScreen);
+beginBtn.addEventListener('click', quizScreen);
 // quizEl.addEventListener('click', endScreen);
 
 init();
