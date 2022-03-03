@@ -126,7 +126,7 @@ function checkAnswer(choice) {
     if (choice !== correctAnswer) {
         // tell them it's wrong
         rightOrWrong.textContent = 'WRONG!';
-        // subtract 10 sec from timer
+        // subtract 15 sec from timer
         secondsLeft = Math.max(secondsLeft - 15, 0);        
     }
     else {
