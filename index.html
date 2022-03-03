@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <nav class="navbar fixed-top navbar-light bg-light">
-    <a class="navbar-brand" href="#">High Scores</a>
+    <div id="high-scores">
+      <a class="navbar-brand" href="#" id="view-scores">High Scores</a>
+      </div>
     <div id="time">
-      <p>Time: <span id="timer">0</span></p>
+      <p><span id="timer">0</span></p>
       </div>
         </nav>
   <h1>Quiz</h1>
@@ -21,7 +22,7 @@
     <div class="col-12">
       <h2>Test Your Knowledge!</h2>
       <p>Can you figure out these geography questions? Try and get the highest score!</p>
-      <button class="btn btn-primary" id="begin">Click to Start</button>
+      <button class="btn btn-success" id="begin">Click to Start</button>
       </div>
   
   </div>
@@ -42,6 +43,15 @@
     <div>
       <label for="initials">Initials: </label>
       <input type="text" id="initials" />
+      <button type="submit" id="submit-high-score">Submit</button>
+    </div>
+  </div>
+  <div class="high-scores-container">
+    <ol id="high-score-list">
+    </ol>
+    <div class="buttons">
+      <button class="btn btn-primary" type="button" onclick="goBack()">Go Back</button>
+      <button class="btn btn-danger" type="button" onclick="clearHighScores()">Clear High Scores</button>
     </div>
   </div>
 </div>
